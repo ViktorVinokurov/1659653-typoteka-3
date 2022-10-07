@@ -12,7 +12,9 @@ const postsRouter = require('./router/posts-router');
 
 app.use('/', mainRouter);
 app.use('/posts', postsRouter);
-
+app.use((req, res) => {
+  res.status(404).send(`Страницы ${req.path} нет в системе`);
+})
 module.exports = {
   name: `--server`,
   run(args) {
